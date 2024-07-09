@@ -1,40 +1,40 @@
 package com.hibernate.demo.first;
 
+import java.util.ArrayList;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.Query;
 
-import com.hibernate.demo.first.modal.student;
-import com.hibernate.demo.first.modal.studentAddress;
+import com.hibernate.demo.first.modal.marks;
+import com.hibernate.demo.first.modal.studentResult;
 
 public class App 
 {
     public static void main( String[] args )
     {
-        student s1 = new student();
-        studentAddress s1A = new studentAddress();
-        s1A.setCity("Baloda Bazar");
-        s1A.setState("chhattisgarh");
-        s1A.setStreet("road line");
-        s1A.setPincode(493526);
-        
-        s1.setId(102);
-        s1.setName("Gulshan verma");
-        s1.setAddress(s1A);
-        s1.setRoll_no(0);
-        s1.set_class(null);
-        
-        Configuration con = new Configuration().configure().addAnnotatedClass(student.class);
+    	studentResult str = new studentResult();
+    	marks mark = new marks();
+    	mark.setId(102);
+    	mark.setHindi(72);
+    	mark.setEnglish(60);
+    	mark.setMaths(62);
+    	mark.setScience(62);
+    	
+    	str.setResult(true);
+    	str.setStudentMarks(mark);
+    	
+        Configuration con = new Configuration().configure().addAnnotatedClass(studentResult.class).addAnnotatedClass(marks.class);
         SessionFactory sf = con.buildSessionFactory();
         Session session = sf.openSession();
         Transaction tx = session.beginTransaction();
-//        session.save(s1);
-        session.persist(s1);
-        
-
+        session.persist(mark);
+        session.persist(str);
+        studentResult re = session.get(studentResult.class, 2);
         tx.commit();
-        System.out.println("this is app.java");
+        System.out.println("this is app.java"+re.toString());
         
     }
 }

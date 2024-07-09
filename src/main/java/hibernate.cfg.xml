@@ -10,5 +10,9 @@
   <property name="hbm2ddl.auto">update</property>
   <property name="show_sql">true</property>
   <mapping class="com.hibernate.demo.first.modal.student"/>
+  <mapping class="com.hibernate.demo.first.modal.marks"/>
+  <mapping class="com.hibernate.demo.first.modal.studentResult"/>
+  
+  <!-- <property name="current_session_context_class">thread</property> -->
  </session-factory>
 </hibernate-configuration>
