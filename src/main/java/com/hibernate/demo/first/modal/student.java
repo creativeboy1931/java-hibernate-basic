@@ -7,12 +7,14 @@ import jakarta.persistence.Id;
 @Entity
 public class student{
 	@Id
-	int id;
-	String name;
-	int roll_no;
+	private int id;
+	private String name;
+	private int roll_no;
 	@Column(name = "class")
-	String _class;
+	private String _class;	
+	private studentAddress address;
 	
+
 	//	#operational methods
 	public int getId() {
 		return id;
@@ -20,18 +22,28 @@ public class student{
 	public void setId(int id) {
 		this.id = id;
 	}
+
 	public String getName() {
 		return name;
 	}
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public int getRoll_no() {
 		return roll_no;
 	}
 	public void setRoll_no(int roll_no) {
 		this.roll_no = roll_no;
 	}
+	
+	public studentAddress getAddress() {
+		return address;
+	}
+	public void setAddress(studentAddress address) {
+		this.address = address;
+	}
+	
 	public String get_class() {
 		return _class;
 	}
@@ -41,7 +53,8 @@ public class student{
 	
 	@Override
 	public String toString() {
-		return "student [id=" + id + ", name=" + name + ", roll_no=" + roll_no + ", _class=" + _class + "]";
+		return "student [id=" + id + ", Name ="+getName()+", roll_no=" + roll_no + ", Address =" + address + ", _class=" + _class + "]";
 	}
+
 	
 }
